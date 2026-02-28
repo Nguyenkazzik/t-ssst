@@ -80,22 +80,3 @@ function progressInterva(){
         heartBox.style.left = heartLeft + '%'
     }
 }
-setInterval(()=>{
-    let img = document.createElement("div");
-    img.className = "imgRain";
-
-    img.innerHTML = `<img src="image/love3.jpg" width="80">`;
-
-    document.body.appendChild(img);
-
-    img.style.left = Math.random()*100 + "%";
-
-    setTimeout(()=>{
-        img.style.top = "100%";
-    },50);
-
-    setTimeout(()=>{
-        img.remove();
-    },5000);
-
-},1000);
