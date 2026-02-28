@@ -215,144 +215,82 @@ $(window).on('load', function(event){
         getHeart(e)
     }
 
+
     const inputField = document.getElementById('inputField');
     const textToType = "Bùi Phương Anh";
-    const typingSpeed = 100; // milliseconds per character
-
     let charIndex = 0;
+
     function typeText() {
         if (charIndex < textToType.length) {
             inputField.value += textToType.charAt(charIndex);
             charIndex++;
-            setTimeout(typeText, typingSpeed);
-        }
-        if(inputField.value.length == textToType.length){
-            setTimeout(()=>{
-                document.querySelector(".buttonLove").style.transform = "translateY(0%)";
-                document.querySelector(".cricleBtn").style.transform = "scale(0.1)"
-            },1000)
-            setTimeout(()=>{
-                document.querySelector(".cricleBtn").style.transform = "scale(1)"
-                document.querySelector(".cricleBtn").innerHTML = "💗"
-            },2000)
-            setTimeout(()=>{
-                document.querySelector(".buttonLove").style.width = "120px"
-                document.querySelector(".button").style.transform = "translateX(25px)"
-            },2500)
-            setTimeout(()=>{
-                document.querySelector(".button").style.width = "calc(100% - 25px)"
-                document.querySelector(".button").style.height = "10px"
-            },3000)
-            setTimeout(()=>{
-                document.querySelector(".button").style.height = "30px"
-            },3500)
-            setTimeout(()=>{
-                document.querySelector(".button").innerHTML = "Nhận thư"
-            },4000)
+            setTimeout(typeText, 100);
+        } else {
+            document.querySelector(".buttonLove").style.transform = "translateY(0%)";
         }
     }
 
-    setTimeout(()=>{
-        typeText();
-    }, 11500)
+    setTimeout(typeText, 2000);
 
-    // .textLetter text h2
+    // FIX TEXT LETTER
     let indexText = 0;
     let textLetter = document.querySelector('.textLetter h2');
     const textLetterH2 = "Gửi bạn!";
-    let timoutTextLetter;
 
     function textCharLetter(){
         if (indexText < textLetterH2.length) {
             textLetter.textContent += textLetterH2[indexText];
             indexText++;
-            setTimeout(indexText, 100);
+            setTimeout(textCharLetter, 100); // ✅ FIX
         }
-        else{
-            clearInterval(timoutTextLetter);
-            setTimeout(()=>{
-                funcTimeoutLetterContent()
-            },500)
-        }
-    }
-    function funcTimeoutLetter(){
-        indexText = 0; // Reset indexText
-        textLetter.textContent = ''; // Xóa nội dung hiện tại của textLetter
-        clearInterval(timoutTextLetter);
-        timoutTextLetter =  setInterval(()=>{
-                textCharLetter();
-            }, 200)
     }
 
-    // chữ của thư bạn muốn gửi
+    function funcTimeoutLetter(){
+        indexText = 0;
+        textLetter.textContent = '';
+        textCharLetter();
+    }
+
+    // FIX CONTENT
     let indexTextContent = 0;
     let textLetterContent = document.querySelector('.contentLetter');
-    const textLetterP = "8/3 vui vẻ nha Phương Anh,  chúc bạn việc gì cũng cần có sức khỏe tốt đã,  có thì mới nhận đc lời chúc này chứ,  tiếp là gặp nhiều điều may mắn trong cuộc sống,  cuối là gặp nhiều thành công ,  tiếc là còn nhiều cái cuối lắm,  không đếm xuể nhưng mong những điều tốt đẹp luôn đến bên Phương Anh .";
-    let timoutTextLetterContent;
+    const textLetterP = "8/3 vui vẻ nha Phương Anh...";
+
     function textCharLetterContent(){
         if (indexTextContent < textLetterP.length) {
             textLetterContent.textContent += textLetterP[indexTextContent];
             indexTextContent++;
-            setTimeout(indexTextContent, 100);
-        }
-        else{
-            clearInterval(timoutTextLetterContent)
-
+            setTimeout(textCharLetterContent, 50); // ✅ FIX
         }
     }
+
     function funcTimeoutLetterContent(){
-        indexTextContent = 0; // Reset indexTextContent
-        textLetterContent.textContent = ''; // Xóa nội dung hiện tại của textLetter
-        clearInterval(timoutTextLetterContent);
-        timoutTextLetterContent =  setInterval(()=>{
-            textCharLetterContent();
-            }, 100)
+        indexTextContent = 0;
+        textLetterContent.textContent = '';
+        textCharLetterContent();
     }
-    //end 
-    document.querySelector(".boxSlider .right").addEventListener("click", function(){
-        var slider = document.querySelectorAll(".slider")
-        document.querySelector(".listSlider").appendChild(slider[0])
-    })
-    document.querySelector(".boxSlider .left").addEventListener("click", function(){
-        var slider = document.querySelectorAll(".slider")
-        document.querySelector(".listSlider").prepend(slider[slider.length -1])
-    })
 
-    document.querySelector(".buttonLove").addEventListener("click", function(){
-        let timeout = setInterval(()=>{
-            var letters = document.createElement("div");
-            letters.className = "letters"
-            letters.innerHTML = '<img src="../image/letters.png" alt="">';
-            document.querySelector("body").prepend(letters)
-            let left = Math.floor(Math.random() * 100);
-            let rotate = Math.floor(Math.random() * 360);
-            letters.style.left = left + "%";
-            letters.style.top = "-10%";
-            letters.style.transform = `rotate(${rotate}deg)`;
-            setTimeout(()=>{
-                letters.style.top = "100%";
-            },1000)
-            setTimeout(()=>{
-                letters.remove()
-            },11000)
-            document.querySelectorAll(".letters").forEach((item)=>{
-                item.addEventListener("click", function(){
-                    clearInterval(timeout)
-                    $(".wrapperLetterForm").fadeIn()
-                    funcTimeoutLetter();
-                    
-                })
-            })
-        },500)
-    })
+    // SLIDER FIX
+    document.querySelector(".right").onclick = function(){
+        let slider = document.querySelectorAll(".slider");
+        document.querySelector(".listSlider").appendChild(slider[0]);
+    }
 
-    document.querySelector(".fa-xmark").addEventListener("click", function(){
-        indexTextContent = 0; // Reset indexTextContent
-        textLetterContent.textContent = ''; // Xóa nội dung hiện tại của textLetter
-        clearInterval(timoutTextLetterContent)
-        $(".wrapperLetterForm").fadeOut()
-    })
-    
+    document.querySelector(".left").onclick = function(){
+        let slider = document.querySelectorAll(".slider");
+        document.querySelector(".listSlider").prepend(slider[slider.length -1]);
+    }
+
+    // BUTTON
+    document.querySelector(".buttonLove").onclick = function(){
+        $(".wrapperLetterForm").fadeIn();
+        funcTimeoutLetter();
+        funcTimeoutLetterContent();
+    }
+
+    document.querySelector(".fa-xmark").onclick = function(){
+        $(".wrapperLetterForm").fadeOut();
+    }
 </script>
 
 <audio id="bgm" src="music/nhac.mp3" loop></audio>
