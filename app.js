@@ -16,12 +16,15 @@ var progressLoad = setInterval(progressInterva,100)
 button.addEventListener("click", function(){
 
     // phát nhạc
-    document.getElementById("bgm").play();
+    let music = document.getElementById("bgm");
+    music.play();
+
+    // lưu trạng thái đang phát
+    localStorage.setItem("musicPlaying", "true");
 
     button.style.transform = "scale(0.8)";
 
     setTimeout(()=>{
-        button.style.transform = "scale(1)";
         window.location.href = "./love/love.html";
     },200);
 
