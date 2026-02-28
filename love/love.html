@@ -153,6 +153,16 @@
     <source src="../music/nhac.mp3" type="audio/mpeg">
 </audio>
 
+<script>
+window.addEventListener("load", function(){
+    const audio = document.getElementById("bgm");
+
+    document.addEventListener("click", function () {
+        audio.play();
+    }, { once: true });
+});
+</script>
+
 </body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script>
