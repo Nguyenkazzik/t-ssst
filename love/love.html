@@ -339,11 +339,49 @@
                     clearInterval(timeout)
                     $(".wrapperLetterForm").fadeIn()
                     funcTimeoutLetter();
+
+                    // ===== ẢNH RƠI =====
+                    let rain = setInterval(()=>{
+                        let img = document.createElement("div");
+                        img.className = "imgRain";
+
+                        let images = [
+                            "image/love3.jpg",
+                            "image/love4.jpg",
+                            "image/love5.jpg"
+                        ];
+
+                        let randomImg = images[Math.floor(Math.random() * images.length)];
+                        img.innerHTML = `<img src="${randomImg}" alt="">`;
+
+                        document.body.appendChild(img);
+
+                        let left = Math.random() * 100;
+                        let rotate = Math.random() * 360;
+
+                        img.style.left = left + "%";
+                        img.style.transform = `rotate(${rotate}deg)`;
+
+                        setTimeout(()=>{
+                            img.style.top = "100%";
+                        },50);
+
+                        setTimeout(()=>{
+                            img.remove();
+                        },5000);
+
+                    },400);
+
+                    // dừng mưa ảnh sau 6 giây
+                    setTimeout(()=>{
+                        clearInterval(rain);
+                    },6000);
+                })
                     
                 })
             })
         },500)
-    })
+
 
     document.querySelector(".fa-xmark").addEventListener("click", function(){
         indexTextContent = 0; // Reset indexTextContent
