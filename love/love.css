@@ -18,7 +18,7 @@ body{
 .formInput{
     position: absolute;
     top: -100%;
-    width: 50%;
+    width: 45%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #EA4C89;
@@ -30,8 +30,8 @@ body{
     border-radius: 20px;
     transition: 1s;
     overflow: hidden;
-    padding-top: 16px; /* THÊM DÒNG NÀY: Để khung cao hơn ở phía trên */
-    padding-bottom: 25px;
+
+    padding-bottom: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation: formInput 1s 3s forwards;
 }
