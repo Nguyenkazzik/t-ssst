@@ -371,16 +371,16 @@
     
             let imgBox = document.createElement("div");
             imgBox.className = "imgRain";
-    
+            imgBox.style.transition = "top 5s linear, transform 5s ease-in-out";
             let images = [
                 "../image/love3.png",
-                "../image/love4.png",
+                "../image/love2.png",
                 "../image/love5.png",
                 "../image/love6.png",
                 "../image/love7.png",
                 "../image/love8.png",
                 "../image/love9.png",
-                "../image/love10.png",
+                "../image/love 10.png",
                 "../image/love11.png",
                 "../image/love12.png",
                 "../image/love13.png",
@@ -400,12 +400,14 @@
             let opacity = 0.4 + depth * 0.6;
     
             let left = Math.random() * 100;
-            let rotate = Math.random() * 360;
+            let rotate = Math.random() < 0.5 
+                ? Math.random() * 30     // 0 → 30°
+                : -Math.random() * 30;   // 0 → -30°
     
             imgBox.style.left = left + "%";
             imgBox.style.top = "-10%";
             imgBox.style.opacity = opacity;
-            imgBox.style.transform = `rotate(${rotate}deg)`;
+            imgBox.style.transform = `rotate(${rotate}deg) translateX(${Math.random()*50 - 25}px)`;
     
             imgBox.querySelector("img").style.width = size + "px";
     
