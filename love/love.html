@@ -318,90 +318,107 @@
     })
 
     document.querySelector(".buttonLove").addEventListener("click", function(){
+
         let timeout = setInterval(()=>{
+    
             var letters = document.createElement("div");
-            letters.className = "letters"
+            letters.className = "letters";
             letters.innerHTML = '<img src="../image/letters.png" alt="">';
-            document.querySelector("body").prepend(letters)
-            let left = Math.floor(Math.random() * 100);
-            let rotate = Math.floor(Math.random() * 360);
+            document.body.prepend(letters);
+    
+            let left = Math.random() * 100;
+            let rotate = Math.random() * 360;
+    
             letters.style.left = left + "%";
             letters.style.top = "-10%";
             letters.style.transform = `rotate(${rotate}deg)`;
+    
             setTimeout(()=>{
                 letters.style.top = "100%";
-            },1000)
+            },1000);
+    
             setTimeout(()=>{
-                letters.remove()
-            },11000)
-            document.querySelectorAll(".letters").forEach((item)=>{
-                item.addEventListener("click", function(){
-                    clearInterval(timeout)
-                    
-                    $(".wrapperLetterForm").fadeIn();
-                    funcTimeoutLetter();
-
-                    // ===== ẢNH RƠI =====
-                    let rain = setInterval(()=>{
-                        let img = document.createElement("div");
-                        img.className = "imgRain";
-
-                        let images = [
-                            "../image/love14.png",
-                            "../image/love3.png",
-                            "../image/love5.png",
-                            "../image/love6.png",
-                            "../image/love7.png",
-                            "../image/love8.png",
-                            "../image/love9.png",
-                            "../image/love 10.png",
-                            "../image/love11.png",
-                            "../image/love12.png",
-                            "../image/love13.png",
-                            "../image/love14.png",
-                            "../image/love15.png",
-                            "../image/love2.png",
-
-                        ];
-
-                        let randomImg = images[Math.floor(Math.random() * images.length)];
-                        img.innerHTML = `<img src="${randomImg}" alt="">`;
-
-                        document.body.appendChild(img);
-
-                        let left = Math.random() * 100;
-                        let rotate = Math.random() * 360;
-                        let size = 50 + Math.random() * 50; // random size
-                
-
-                        img.style.left = left + "%";
-                        img.style.transform = `rotate(${rotate}deg)`;
-                        img.querySelector("img").style.width = size + "px";
-
-                        setTimeout(()=>{
-                            img.style.top = "100%";
-                        },50);
-
-                        setTimeout(()=>{
-                            img.remove();
-                        },5000);
-
-                    },11500);
-
-                    // ===== KẾT THÚC ẢNH RƠI =====
-                })
-                    
-                })
-            })
-        },1500)
-
-
+                letters.remove();
+            },11000);
+    
+            // CLICK THƯ
+            letters.addEventListener("click", function(){
+    
+                clearInterval(timeout);
+    
+                $(".wrapperLetterForm").fadeIn();
+    
+                dropImage(); // ✅ PHẢI GỌI
+    
+            });
+    
+        },1500); // giảm số lượng thư
+    
+    
+        // ===== PARALLAX IMAGE =====
+        function dropImage() {
+    
+            let imgBox = document.createElement("div");
+            imgBox.className = "imgRain";
+    
+            let images = [
+                "../image/love3.png",
+                "../image/love4.png",
+                "../image/love5.png",
+                "../image/love6.png",
+                "../image/love7.png",
+                "../image/love8.png",
+                "../image/love9.png",
+                "../image/love10.png",
+                "../image/love11.png",
+                "../image/love12.png",
+                "../image/love13.png",
+                "../image/love14.png",
+                "../image/love15.png"
+            ];
+    
+            let randomImg = images[Math.floor(Math.random() * images.length)];
+            imgBox.innerHTML = `<img src="${randomImg}" alt="">`;
+    
+            document.body.appendChild(imgBox);
+    
+            let depth = Math.random();
+    
+            let size = 40 + depth * 80;
+            let speed = 4000 + (1 - depth) * 3000;
+            let opacity = 0.4 + depth * 0.6;
+    
+            let left = Math.random() * 100;
+            let rotate = Math.random() * 360;
+    
+            imgBox.style.left = left + "%";
+            imgBox.style.top = "-10%";
+            imgBox.style.opacity = opacity;
+            imgBox.style.transform = `rotate(${rotate}deg)`;
+    
+            imgBox.querySelector("img").style.width = size + "px";
+    
+            setTimeout(()=>{
+                imgBox.style.top = "110%";
+            },50);
+    
+            setTimeout(()=>{
+                imgBox.remove();
+            },speed);
+    
+            setTimeout(dropImage, 2000 + Math.random() * 3000);
+        }
+    
+    
+    });
+    
+    // NÚT ĐÓNG
     document.querySelector(".fa-xmark").addEventListener("click", function(){
-        indexTextContent = 0; // Reset indexTextContent
-        textLetterContent.textContent = ''; // Xóa nội dung hiện tại của textLetter
-        clearInterval(timoutTextLetterContent)
-        $(".wrapperLetterForm").fadeOut()
-    })
+        indexTextContent = 0;
+        textLetterContent.textContent = '';
+        clearInterval(timoutTextLetterContent);
+        $(".wrapperLetterForm").fadeOut();
+    });
 </script>
 
 
