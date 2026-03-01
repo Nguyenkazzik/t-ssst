@@ -3,8 +3,8 @@
 <head>
     <style>
         body {
-            /* Thêm linear-gradient với mã màu đen rgba(0,0,0, 0.5) để làm mờ xám ảnh */
-            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../image/background.jpg'); 
+            /* Dùng mã 255, 255, 255 để tạo lớp phủ màu trắng mờ */
+            background-image: linear-gradient(rgba(255, 255, 255, 0.658), rgba(255, 255, 255, 0.6)), url('../image/background.jpg'); 
             
             background-size: cover; 
             background-position: center; 
@@ -32,7 +32,7 @@
                 <div class="handsCat">
                     <img src="../image/handsCat.png" alt="">
                 </div>
-                <h1>Welcome</h1>
+                <h1>Rất vui vì bạng tới</h1>
             </div>
             <div class="boxSlider">
                     <div class="listSlider">
@@ -290,7 +290,7 @@
         clearInterval(timoutTextLetter);
         timoutTextLetter =  setInterval(()=>{
                 textCharLetter();
-            }, 450)
+            }, 250)
     }
 
     // chữ của thư bạn muốn gửi
@@ -314,7 +314,7 @@
         clearInterval(timoutTextLetterContent);
         timoutTextLetterContent =  setInterval(()=>{
             textCharLetterContent();
-            }, 100)
+            }, 30)
     }
     //end 
     document.querySelector(".boxSlider .right").addEventListener("click", function(){
@@ -363,7 +363,7 @@
     
             });
     
-        },200); // giảm số lượng thư
+        },150); // giảm số lượng thư
     
     
         // ===== PARALLAX IMAGE =====
