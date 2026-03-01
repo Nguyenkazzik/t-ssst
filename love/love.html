@@ -292,9 +292,8 @@
         if (indexTextContent < textLetterP.length) {
             textLetterContent.textContent += textLetterP[indexTextContent];
             indexTextContent++;
-            setTimeout(indexTextContent, 100);
-        }
-        else{
+            
+        } else {
             clearInterval(timoutTextLetterContent)
 
         }
@@ -348,7 +347,7 @@
     
                 $(".wrapperLetterForm").fadeIn();
     
-                dropImage(); // ✅ PHẢI GỌI
+                dropImage(); 
     
             });
     
