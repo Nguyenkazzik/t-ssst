@@ -261,17 +261,14 @@
     const textLetterH2 = "Gửi bà tổ của sự dễ thươngg!";
     let timoutTextLetter;
 
-    function textCharLetter(){
+   function textCharLetter(){
         if (indexText < textLetterH2.length) {
             textLetter.textContent += textLetterH2[indexText];
             indexText++;
-            setTimeout(indexText, 100);
         }
         else{
             clearInterval(timoutTextLetter);
-            setTimeout(()=>{
-                funcTimeoutLetterContent()
-            },11500)
+            funcTimeoutLetterContent(); // gọi luôn
         }
     }
     function funcTimeoutLetter(){
@@ -346,13 +343,14 @@
                 clearInterval(timeout);
     
                 $(".wrapperLetterForm").fadeIn();
+                funcTimeoutLetter(); 
                 funcTimeoutLetterContent(); 
     
                 dropImage(); 
     
             });
     
-        },1500); // giảm số lượng thư
+        },1000); // giảm số lượng thư
     
     
         // ===== PARALLAX IMAGE =====
