@@ -18,7 +18,7 @@ body{
 .formInput{
     position: absolute;
     top: -100%;
-    width: 40%;
+    width: 60%;
     left: 50%;
     transform: translateX(-50%);
     background-color: #EA4C89;
@@ -30,7 +30,8 @@ body{
     border-radius: 20px;
     transition: 1s;
     overflow: hidden;
-    padding-bottom: 10px;
+    padding-top: 20px; /* THÊM DÒNG NÀY: Để khung cao hơn ở phía trên */
+    padding-bottom: 30px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     animation: formInput 1s 3s forwards;
 }
@@ -150,8 +151,8 @@ body{
 
 .listSlider{
     position: relative;
-    width: 200px;
-    height: 100px;
+    width: 280px;
+    height: 140px;
     display: flex;
     overflow: hidden;
     border-radius: 10px;
@@ -163,7 +164,7 @@ body{
     transition: 0.5s;
 }
 .listSlider img{
-    width: 200px;
+    width: 280px;
     height: 100%;
     object-fit: cover;
 }
