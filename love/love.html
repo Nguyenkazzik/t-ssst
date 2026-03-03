@@ -127,6 +127,7 @@
             <div class="circle1"></div>
             <div class="circle2"></div>
         </div>
+        <img id="afterLoadImg" src="../image/small-image.png" style="display:none; position:absolute; top:50%; right:30px; transform:translateY(-50%); width:50px;" alt="">
     </div>
 
     <div class="wrapperLetterForm">
@@ -176,8 +177,9 @@
     });
 
     $('body').removeClass('preloading');
-    $('.loadingLove').delay(1000).fadeOut('fast');
-});
+    $('.loadingLove').delay(1000).fadeOut('fast', function(){
+        document.getElementById("afterLoadImg").style.display = "block";
+    });
 
         
     function getHeart(e){
@@ -431,7 +433,5 @@
         $(".wrapperLetterForm").fadeOut();
     });
 </script>
-
-
 </body>
 </html>
