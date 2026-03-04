@@ -237,11 +237,13 @@ body{
 }
 
 #smallImg {
-    width: 140px;
-    display: block;
-    margin: 15px auto 0 auto;
+    width: 195px;
+    position: absolute;
+    right: 102px;     /* đẩy qua phải */
+    bottom: -210px;    /* hạ xuống dưới */
     opacity: 0;
     transition: 0.5s ease;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2));
 }
 .progress-bar {
     position: relative;
