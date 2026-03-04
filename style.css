@@ -238,9 +238,8 @@ body{
 
 #smallImg {
     width: 140px;
-    position: absolute;
-    right: -200px;     /* đẩy qua phải */
-    bottom: -150px;    /* hạ xuống dưới */
+    display: block;
+    margin: 15px auto 0 auto;
     opacity: 0;
     transition: 0.5s ease;
 }
