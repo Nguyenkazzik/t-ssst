@@ -238,13 +238,10 @@ body{
 
 #smallImg {
     width: 140px;
-    position: absolute;
-    right: -160px;   /* điều chỉnh theo kích thước mới */
-    top: 50%;
-    transform: translateY(-50%);
+    display: block;
+    margin: 10px auto 0 auto;  /* cách chữ 10px */
     opacity: 0;
     transition: 0.5s ease;
-    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.2));
 }
 
 .progress-bar {
