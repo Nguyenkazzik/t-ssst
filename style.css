@@ -238,12 +238,12 @@ body{
 
 #smallImg {
     width: 140px;
-    display: block;
-    margin: 10px auto 0 auto;  /* cách chữ 10px */
+    position: absolute;
+    right: -200px;     /* đẩy qua phải */
+    bottom: -150px;    /* hạ xuống dưới */
     opacity: 0;
     transition: 0.5s ease;
 }
-
 .progress-bar {
     position: relative;
 }
